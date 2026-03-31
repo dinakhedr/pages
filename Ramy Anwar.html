@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Ramy Anwar — Pharmaceutical & Cosmetics Consultant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:          #B8922A;
+      --gold-light:    #D4AA50;
+      --gold-dim:      #7A6020;
+      --gold-border:   rgba(184,146,42,0.3);
+      --navy:          #141C2E;
+      --navy-mid:      #1A2438;
+      --navy-border:   rgba(255,255,255,0.08);
+
+      /* light section backgrounds */
+      --bg-white:      #FFFFFF;
+      --bg-beige:      #F5F0E8;
+      --light-border:  #E2D9CC;
+      --dark-text:     #1A1612;
+      --mid-text:      #4A4438;
+      --soft-text:     #7A7060;
+      --gold-on-light: #8B6914;
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Raleway', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+
+    body {
+      background: var(--bg-beige);
+      color: var(--dark-text);
+      font-family: var(--sans);
+      font-weight: 500;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(24px, 4vw, 60px);
+      height: 64px;
+      background: rgba(20,28,46,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+
+    .nav-monogram {
+      width: 34px; height: 34px;
+      border: 1px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .nav-monogram span { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--gold-light); }
+
+    .nav-name-block { display: flex; flex-direction: column; gap: 2px; }
+    .nav-name  { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--gold-light); }
+    .nav-subtitle { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #8A93A8; }
+
+    .nav-links {
+      display: flex; gap: clamp(18px, 2.5vw, 36px); list-style: none;
+      position: absolute; left: 50%; transform: translateX(-50%);
+    }
+    .nav-links a {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8A93A8; text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #F0EDE6; }
+
+    .nav-right { display: flex; align-items: center; }
+    .nav-cta {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); text-decoration: none;
+      border: 1px solid rgba(212,170,80,0.4); padding: 8px 18px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); color: var(--navy); }
+
+    /* ─── HERO (stays navy) ─── */
+    #hero {
+      position: relative;
+      min-height: 52vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 96px clamp(24px, 8vw, 120px) 52px;
+      overflow: hidden;
+      background: linear-gradient(150deg, #1A2848 0%, var(--navy) 60%);
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      bottom: 28px; left: clamp(24px, 8vw, 120px);
+      width: 24px; height: 24px;
+      border-left: 1px solid rgba(212,170,80,0.3);
+      border-bottom: 1px solid rgba(212,170,80,0.3);
+    }
+    .hero-corner-tr {
+      position: absolute; top: 76px; right: clamp(24px, 8vw, 120px);
+      width: 24px; height: 24px;
+      border-right: 1px solid rgba(212,170,80,0.3);
+      border-top: 1px solid rgba(212,170,80,0.3);
+    }
+
+    .hero-name {
+      font-family: var(--serif); font-weight: 700; font-style: normal;
+      font-size: clamp(32px, 4vw, 54px); line-height: 1; letter-spacing: 0.02em;
+      color: #DFC07A; white-space: nowrap;
+      opacity: 0; animation: fadeUp 0.7s ease 0.15s forwards;
+    }
+    .hero-title {
+      font-size: clamp(10px, 1.1vw, 13px); font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase; color: #F0EDE6;
+      margin-top: 14px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards;
+    }
+    .hero-tags {
+      display: flex; align-items: center; gap: 16px; margin-top: 8px;
+      opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+    .hero-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #8A93A8; }
+    .hero-tag-dot { color: #6B5520; font-size: 14px; line-height: 1; }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      position: relative;
+      padding: clamp(36px, 5vh, 56px) clamp(24px, 8vw, 120px);
+    }
+
+    /* alternating backgrounds */
+    #reality   { background: var(--bg-white); }
+    #expertise { background: var(--bg-beige); }
+
+    /* section label */
+    .section-label {
+      font-size: 16px; font-weight: 800;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-on-light);
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .section-label::after { content: ''; width: 56px; height: 2px; background: var(--gold-dim); }
+
+    .reality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(24px, 4vw, 60px);
+      align-items: start;
+    }
+
+    .reality-statement {
+      font-family: var(--serif); font-weight: 700;
+      font-size: clamp(24px, 2.8vw, 38px); line-height: 1.2;
+      color: var(--dark-text);
+    }
+    .reality-statement em { font-style: italic; color: var(--gold-on-light); }
+
+    .reality-closer {
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.6vw, 20px); font-style: italic;
+      color: var(--soft-text); margin-top: 14px; line-height: 1.5;
+    }
+    .reality-closer strong { color: var(--gold-on-light); font-style: normal; font-weight: 700; }
+
+    .reality-pillars-header {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--soft-text); padding-bottom: 10px;
+      border-bottom: 1px solid var(--light-border);
+    }
+    .reality-pillars { display: flex; flex-direction: column; }
+    .reality-pillar { padding: 12px 0; border-bottom: 1px solid var(--light-border); }
+
+    .pillar-title {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark-text); margin-bottom: 4px;
+    }
+    .pillar-text { font-size: 13px; font-weight: 500; color: var(--mid-text); line-height: 1.6; }
+
+    /* ─── AREAS OF EXPERTISE ─── */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--light-border);
+      border: 1px solid var(--light-border);
+    }
+
+    .expertise-col {
+      background: var(--bg-beige);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* category header — fixed height so all 3 cols always match */
+    .expertise-col-header {
+      padding: 18px 18px 16px;
+      border-bottom: 2px solid var(--gold-on-light);
+      background: var(--bg-white);
+      height: 160px;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+
+    .expertise-col-icon {
+      width: 36px; height: 36px; margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--gold-border);
+      background: transparent;
+    }
+
+    .expertise-col-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--gold-on-light); fill: none;
+      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .expertise-col-title {
+      font-size: 14px; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-on-light); margin-bottom: 5px;
+    }
+
+    .expertise-col-sub {
+      font-family: var(--sans);
+      font-size: 13px; font-weight: 500;
+      color: var(--mid-text); line-height: 1.4;
+    }
+
+    /* services list */
+    .expertise-service-list { display: flex; flex-direction: column; flex: 1; }
+
+    .expertise-service-item {
+      padding: 11px 18px;
+      border-bottom: 1px solid var(--light-border);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    .expertise-service-item:last-child { border-bottom: none; }
+
+    .svc-bullet {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold-on-light); flex-shrink: 0; margin-top: 6px;
+    }
+
+    .svc-name {
+      font-size: 12px; font-weight: 700;
+      color: var(--dark-text); line-height: 1.3; margin-bottom: 2px;
+    }
+
+    .svc-desc {
+      font-size: 11px; font-weight: 500;
+      color: var(--soft-text); line-height: 1.5;
+    }
+
+    /* ─── WHO THIS IS FOR ─── */
+    #fit { background: var(--bg-white); }
+
+    .fit-intro {
+      font-family: var(--sans);
+      font-size: 14px; font-weight: 500;
+      color: var(--soft-text); max-width: 580px; margin-bottom: 28px; line-height: 1.6;
+    }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .fit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .fit-grid { grid-template-columns: 1fr; }
+    }
+
+    .fit-card {
+      background: var(--bg-beige);
+      border: 1px solid var(--light-border);
+      padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+
+    .fit-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold-on-light);
+      transition: height 0.3s ease;
+    }
+
+    .fit-card:hover { border-color: rgba(139,105,20,0.35); transform: translateY(-2px); }
+    .fit-card:hover::before { height: 100%; }
+
+    .fit-card-top { display: flex; align-items: center; gap: 10px; }
+
+    .fit-emoji { font-size: 22px; line-height: 1; flex-shrink: 0; }
+
+    .fit-card-name {
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--dark-text);
+    }
+
+    .fit-card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .fit-tag {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--soft-text);
+      background: var(--bg-white);
+      border: 1px solid var(--light-border);
+      padding: 2px 7px;
+    }
+
+    .fit-card-line {
+      font-size: 12px; font-weight: 500;
+      color: var(--mid-text); line-height: 1.55;
+      border-top: 1px solid var(--light-border);
+      padding-top: 8px;
+    }
+
+    .fit-card-line strong { color: var(--gold-on-light); font-weight: 700; }
+
+    /* ─── PROVEN WORK ─── */
+    #work { background: var(--bg-beige); }
+
+    .work-cases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .work-case {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--light-border);
+      background: var(--bg-white);
+    }
+
+    /* Logo placeholder panel — top of card */
+    .work-logo-panel {
+      background: var(--bg-beige);
+      border-bottom: 1px solid var(--light-border);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+    }
+
+    .work-logo-box {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border: 1px dashed var(--gold-border);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg-white);
+    }
+
+    .work-logo-box svg {
+      width: 20px; height: 20px;
+      stroke: rgba(139,105,20,0.35); fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .work-logo-hint {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(139,105,20,0.45);
+    }
+
+    /* Content panel */
+    .work-content {
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .work-type {
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-on-light);
+    }
+
+    .work-name {
+      font-family: var(--serif);
+      font-size: clamp(18px, 1.8vw, 24px); font-weight: 700;
+      color: var(--dark-text); line-height: 1.1;
+    }
+
+    .work-role {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--soft-text);
+    }
+
+    .work-stat-row {
+      display: flex; flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin: 2px 0;
+    }
+
+    .work-stat {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--bg-beige);
+      background: var(--gold-on-light);
+      padding: 2px 8px;
+    }
+
+    .work-desc {
+      font-size: 12px; font-weight: 500;
+      color: var(--mid-text); line-height: 1.6;
+      border-top: 1px solid var(--light-border);
+      padding-top: 8px;
+      margin-top: 2px;
+    }
+
+    /* Placeholder case */
+    .work-case.work-placeholder {
+      background: transparent;
+      border: 1px dashed var(--light-border);
+    }
+
+    .work-case.work-placeholder .work-logo-panel {
+      background: transparent;
+      border-bottom: 1px dashed var(--light-border);
+    }
+
+    .work-case.work-placeholder .work-content {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 80px;
+    }
+
+    .work-placeholder-text {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(122,112,96,0.4);
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .work-cases { grid-template-columns: 1fr; }
+    }
+
+    /* ─── BACKGROUND & EXPERTISE ─── */
+    #profile { background: var(--bg-white); }
+
+    .profile-bio {
+      font-size: 14px; font-weight: 500;
+      color: var(--mid-text); line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    /* 5-card grid */
+    .profile-cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--light-border);
+      border: 1px solid var(--light-border);
+      margin-bottom: 12px;
+    }
+
+    .profile-card {
+      background: var(--bg-beige);
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .profile-card-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg-white);
+      flex-shrink: 0;
+    }
+
+    .profile-card-icon svg {
+      width: 17px; height: 17px;
+      stroke: var(--gold-on-light); fill: none;
+      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .profile-card-category {
+      font-size: 8px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-on-light);
+    }
+
+    .profile-card-title {
+      font-family: var(--serif);
+      font-size: clamp(14px, 1.3vw, 17px); font-weight: 700;
+      color: var(--dark-text); line-height: 1.2;
+    }
+
+    .profile-card-org {
+      font-size: 11px; font-weight: 600;
+      color: var(--mid-text); line-height: 1.35;
+    }
+
+    .profile-card-note {
+      font-size: 11px; font-weight: 500;
+      color: var(--soft-text); line-height: 1.45;
+      border-top: 1px solid var(--light-border);
+      padding-top: 8px;
+      margin-top: 2px;
+    }
+
+    /* Quote bar — full width below cards */
+    .profile-quote-bar {
+      background: var(--navy);
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-quote-bar-mark {
+      font-family: var(--serif);
+      font-size: 48px; font-weight: 700; line-height: 0.7;
+      color: var(--gold-light); opacity: 0.45;
+      flex-shrink: 0;
+    }
+
+    .profile-quote-bar-body {
+      flex: 1;
+    }
+
+    .profile-quote-bar-text {
+      font-family: var(--serif);
+      font-size: clamp(14px, 1.4vw, 18px);
+      font-style: italic; font-weight: 600;
+      color: #F0EDE6; line-height: 1.5;
+    }
+
+    .profile-quote-bar-text strong {
+      font-style: normal; color: #DFC07A;
+    }
+
+    .profile-quote-bar-attr {
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #8A93A8; margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .profile-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 580px) {
+      .profile-cards { grid-template-columns: repeat(2, 1fr); }
+      .profile-quote-bar { flex-direction: column; gap: 10px; }
+    }
+
+    /* ─── BOOK A DISCOVERY CALL ─── */
+    #contact {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle radial glow */
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 60vw; height: 60vw;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* corner brackets */
+    #contact::after {
+      content: '';
+      position: absolute;
+      bottom: 28px; right: clamp(24px, 8vw, 120px);
+      width: 22px; height: 22px;
+      border-right: 1px solid rgba(212,170,80,0.3);
+      border-bottom: 1px solid rgba(212,170,80,0.3);
+    }
+
+    .contact-corner-tl {
+      position: absolute;
+      top: 28px; left: clamp(24px, 8vw, 120px);
+      width: 22px; height: 22px;
+      border-left: 1px solid rgba(212,170,80,0.3);
+      border-top: 1px solid rgba(212,170,80,0.3);
+    }
+
+    .contact-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: center;
+    }
+
+    .contact-left {}
+
+    .contact-eyebrow {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: #D4AA50; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .contact-eyebrow::before {
+      content: ''; width: 32px; height: 1px;
+      background: rgba(212,170,80,0.4);
+    }
+
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 700; line-height: 1.1;
+      color: #F0EDE6;
+      margin-bottom: 10px;
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: #DFC07A;
+    }
+
+    .contact-sub {
+      font-size: 13px; font-weight: 500;
+      color: #8A93A8; line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* CTA block */
+    .contact-cta-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #D4AA50;
+      color: var(--navy);
+      text-decoration: none;
+      padding: 13px 26px;
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .contact-btn:hover {
+      background: #DFC07A;
+      transform: translateY(-1px);
+    }
+
+    .contact-btn-arrow { font-size: 14px; line-height: 1; }
+
+    .contact-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(212,170,80,0.7);
+      text-decoration: none;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(212,170,80,0.2);
+      padding: 9px 20px;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .contact-whatsapp:hover {
+      color: #D4AA50;
+      border-color: rgba(212,170,80,0.45);
+    }
+
+    .contact-phone-display {
+      font-family: var(--sans);
+      font-size: clamp(15px, 1.6vw, 20px);
+      font-weight: 600; letter-spacing: 0.08em;
+      color: rgba(240,237,230,0.45);
+      text-align: right;
+    }
+
+    @media (max-width: 760px) {
+      .contact-inner { grid-template-columns: 1fr; }
+      .contact-cta-block { align-items: flex-start; }
+      .contact-phone-display { text-align: left; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) { .nav-links { display: none; } }
+
+    @media (max-width: 900px) {
+      .expertise-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .reality-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-name { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#hero" class="nav-brand">
+      <div class="nav-monogram"><span>RA</span></div>
+      <div class="nav-name-block">
+        <span class="nav-name">Dr. Ramy Anwar</span>
+        <span class="nav-subtitle">Pharma &amp; Cosmetics Consultant</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#reality">The Reality</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#fit">Who It's For</a></li>
+      <li><a href="#work">Proven Work</a></li>
+      <li><a href="#profile">Background</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-corner-tr"></div>
+    <h1 class="hero-name">Dr. Ramy Anwar</h1>
+    <p class="hero-title">Pharmaceutical &amp; Cosmetics Consultant</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Pharma</span>
+      <span class="hero-tag-dot">·</span>
+      <span class="hero-tag">Cosmetics</span>
+      <span class="hero-tag-dot">·</span>
+      <span class="hero-tag">Brand Architecture</span>
+    </div>
+  </section>
+
+  <!-- ── THE MARKET REALITY ── -->
+  <section id="reality">
+    <p class="section-label">The Market Reality</p>
+
+    <div class="reality-grid">
+      <div>
+        <h2 class="reality-statement">
+          Egypt's pharma &amp; cosmetics market demands both <em>science</em> and <em>business</em> mastery.
+        </h2>
+        <p class="reality-closer">
+          Most operators bring one.<br><strong>Dr. Ramy Anwar brings both.</strong>
+        </p>
+      </div>
+
+      <div>
+        <p class="reality-pillars-header">Where most engagements break down</p>
+        <div class="reality-pillars">
+          <div class="reality-pillar">
+            <p class="pillar-title">Regulatory Complexity</p>
+            <p class="pillar-text">Egypt's CAPA and EDA frameworks require technical depth that most brand builders simply don't have — mistakes here are costly to reverse.</p>
+          </div>
+          <div class="reality-pillar">
+            <p class="pillar-title">Manufacturing Risk</p>
+            <p class="pillar-text">The wrong factory or formulation partner means delays, rejections, and wasted capital before a single unit ships.</p>
+          </div>
+          <div class="reality-pillar">
+            <p class="pillar-title">Brand Without Strategy</p>
+            <p class="pillar-text">A technically compliant product still fails without the right positioning, pricing, and channel approach for the Egyptian market.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AREAS OF EXPERTISE ── -->
+  <section id="expertise">
+    <p class="section-label">Areas of Expertise</p>
+
+    <div class="expertise-grid">
+
+      <!-- COL 1: COSMETICS & PERSONAL CARE -->
+      <div class="expertise-col">
+        <div class="expertise-col-header">
+          <div class="expertise-col-icon">
+            <!-- Droplet / formula flask icon -->
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L6 10a6 6 0 1 0 12 0L12 2z"/>
+              <path d="M9 13.5a2.5 2.5 0 0 0 4 0"/>
+            </svg>
+          </div>
+          <p class="expertise-col-title">Cosmetics &amp; Personal Care</p>
+          <p class="expertise-col-sub">From formula to shelf — legally sound, commercially ready</p>
+        </div>
+        <div class="expertise-service-list">
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Regulatory &amp; CAPA Setup</p>
+              <p class="svc-desc">Product registration, ingredient approval, classification &amp; full EDA documentation</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Chemical Formulation</p>
+              <p class="svc-desc">Original cosmeceutical formula development — actives, stability &amp; safety testing</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">White Label Development</p>
+              <p class="svc-desc">Formula selection, manufacturer matching, packaging &amp; label compliance</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Manufacturing Strategy</p>
+              <p class="svc-desc">Toll vs. contract vs. in-house advisory, GMP assessment &amp; QC framework</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 2: PHARMACEUTICAL & REGULATORY -->
+      <div class="expertise-col">
+        <div class="expertise-col-header">
+          <div class="expertise-col-icon">
+            <!-- Pill / capsule icon -->
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="9" width="20" height="6" rx="3"/>
+              <line x1="12" y1="9" x2="12" y2="15"/>
+              <circle cx="6.5" cy="12" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <p class="expertise-col-title">Pharmaceutical &amp; Regulatory</p>
+          <p class="expertise-col-sub">Precision navigation of Egypt's pharma compliance landscape</p>
+        </div>
+        <div class="expertise-service-list">
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">EDA Drug Registration</p>
+              <p class="svc-desc">Full dossier preparation, classification &amp; submission strategy for pharma &amp; nutraceuticals</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Cosmeceutical Classification</p>
+              <p class="svc-desc">Borderline product advisory — avoid costly re-registration or market withdrawal</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">OTC Commercialisation</p>
+              <p class="svc-desc">Formulation, EDA filing, packaging compliance &amp; pharmacy channel strategy</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Pharmacy Establishment</p>
+              <p class="svc-desc">Full licensing path — syndicate, location compliance, inventory &amp; operational setup</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 3: BRAND & BUSINESS STRATEGY -->
+      <div class="expertise-col">
+        <div class="expertise-col-header">
+          <div class="expertise-col-icon">
+            <!-- Target / positioning icon -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <line x1="12" y1="3" x2="12" y2="6"/>
+              <line x1="12" y1="18" x2="12" y2="21"/>
+              <line x1="3" y1="12" x2="6" y2="12"/>
+              <line x1="18" y1="12" x2="21" y2="12"/>
+            </svg>
+          </div>
+          <p class="expertise-col-title">Brand &amp; Business Strategy</p>
+          <p class="expertise-col-sub">Product, positioning &amp; market — built with MBA-grounded precision</p>
+        </div>
+        <div class="expertise-service-list">
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Brand Architecture</p>
+              <p class="svc-desc">Portfolio structure, pricing logic, naming direction &amp; channel strategy across pharma, retail &amp; e-commerce</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Go-to-Market Planning</p>
+              <p class="svc-desc">Market segmentation, launch sequencing &amp; commercial positioning for Egypt and MENA</p>
+            </div>
+          </div>
+          <div class="expertise-service-item">
+            <div class="svc-bullet"></div>
+            <div>
+              <p class="svc-name">Market Entry Advisory</p>
+              <p class="svc-desc">Regional and international brands entering Egypt — regulatory, distribution &amp; local partner setup</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── WHO THIS IS FOR ── -->
+  <section id="fit">
+    <p class="section-label">Who This Is For</p>
+    <p class="fit-intro">Every engagement is different. But the businesses that get the most out of working with Dr. Ramy Anwar tend to look like one of these.</p>
+
+    <div class="fit-grid">
+
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <span class="fit-emoji">🏷️</span>
+          <span class="fit-card-name">White Label Seekers</span>
+        </div>
+        <div class="fit-card-tags">
+          <span class="fit-tag">Retail Brands</span>
+          <span class="fit-tag">Pharmacy Chains</span>
+          <span class="fit-tag">Hotels</span>
+        </div>
+        <p class="fit-card-line">You want a <strong>shelf-ready, own-branded product</strong> without building formulation or regulatory capability in-house.</p>
+      </div>
+
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <span class="fit-emoji">🩺</span>
+          <span class="fit-card-name">Clinics &amp; Dermatologists</span>
+        </div>
+        <div class="fit-card-tags">
+          <span class="fit-tag">Medical Clinics</span>
+          <span class="fit-tag">Dermatology</span>
+          <span class="fit-tag">Aesthetic Centers</span>
+        </div>
+        <p class="fit-card-line">You have patient trust — now you want to turn it into a <strong>branded clinical product line</strong> that generates real revenue.</p>
+      </div>
+
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <span class="fit-emoji">✨</span>
+          <span class="fit-card-name">Cosmetics Startups</span>
+        </div>
+        <div class="fit-card-tags">
+          <span class="fit-tag">First-time Founders</span>
+          <span class="fit-tag">Beauty Brands</span>
+        </div>
+        <p class="fit-card-line">You have a concept. You need a <strong>single expert point of entry</strong> from formula to registered, manufactured brand — no costly trial and error.</p>
+      </div>
+
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <span class="fit-emoji">📦</span>
+          <span class="fit-card-name">SMEs Expanding Lines</span>
+        </div>
+        <div class="fit-card-tags">
+          <span class="fit-tag">Food &amp; Bev</span>
+          <span class="fit-tag">Wellness</span>
+          <span class="fit-tag">Supplements</span>
+        </div>
+        <p class="fit-card-line">You run a successful business and want a <strong>structured, low-disruption path</strong> into cosmeceuticals, personal care, or nutraceuticals.</p>
+      </div>
+
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <span class="fit-emoji">💊</span>
+          <span class="fit-card-name">Pharmacists Opening a Practice</span>
+        </div>
+        <div class="fit-card-tags">
+          <span class="fit-tag">Licensed Pharmacists</span>
+          <span class="fit-tag">Pharmacy Graduates</span>
+        </div>
+        <p class="fit-card-line">You're ready to open your own pharmacy and want guidance from someone who <strong>has done it himself</strong> — and runs one today.</p>
+      </div>
+
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <span class="fit-emoji">📈</span>
+          <span class="fit-card-name">Investors &amp; Accelerators</span>
+        </div>
+        <div class="fit-card-tags">
+          <span class="fit-tag">Angel Investors</span>
+          <span class="fit-tag">Accelerators</span>
+          <span class="fit-tag">Corporate Ventures</span>
+        </div>
+        <p class="fit-card-line">You're backing a pharma or cosmetics deal and need a <strong>credible technical layer</strong> — to validate roadmaps, assess risk, and protect your investment.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROVEN WORK ── -->
+  <section id="work">
+    <p class="section-label">Proven Work</p>
+
+    <div class="work-cases">
+
+      <!-- CASE 01: Inanna MEA -->
+      <div class="work-case">
+        <div class="work-logo-panel">
+          <div class="work-logo-box">
+            <!-- Logo placeholder -->
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg>
+          </div>
+          <p class="work-logo-hint">Logo coming soon</p>
+        </div>
+        <div class="work-content">
+          <p class="work-type">Live Proof — Brand Built from Scratch</p>
+          <p class="work-name">Inanna MEA</p>
+          <p class="work-role">Founder &amp; CEO</p>
+          <div class="work-stat-row">
+            <span class="work-stat">19 SKUs</span>
+            <span class="work-stat">Hair &amp; Skin Care</span>
+            <span class="work-stat">Egypt Market</span>
+          </div>
+          <p class="work-desc">Conceived, formulated, and launched a full Egyptian cosmetics brand entirely from scratch. Every layer of the build was Dr. Ramy's direct responsibility — formula development, CAPA registration, manufacturer selection, quality control, and brand architecture. The most complete proof of his end-to-end methodology.</p>
+        </div>
+      </div>
+
+      <!-- CASE 02: Health Pharmacy -->
+      <div class="work-case">
+        <div class="work-logo-panel">
+          <div class="work-logo-box">
+            <!-- Logo placeholder -->
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg>
+          </div>
+          <p class="work-logo-hint">Logo coming soon</p>
+        </div>
+        <div class="work-content">
+          <p class="work-type">Live Proof — Pharmacy Established &amp; Operating</p>
+          <p class="work-name">Health Pharmacy</p>
+          <p class="work-role">Owner &amp; Founder</p>
+          <div class="work-stat-row">
+            <span class="work-stat">Physical</span>
+            <span class="work-stat">Licensed</span>
+            <span class="work-stat">Operating</span>
+          </div>
+          <p class="work-desc">A fully licensed, physically operating pharmacy that Dr. Ramy established, built, and runs. The most concrete proof of his end-to-end capability in the pharmacy sector — navigating the Egyptian licensing framework, syndicate requirements, and building a functioning healthcare retail business from the ground up.</p>
+        </div>
+      </div>
+
+      <!-- CASE 03: Placeholder -->
+      <div class="work-case work-placeholder">
+        <div class="work-logo-panel">
+          <div class="work-logo-box">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1" stroke-dasharray="3 2"/><path d="M12 8v8M8 12h8" stroke-dasharray="3 2"/></svg>
+          </div>
+          <p class="work-logo-hint">Coming soon</p>
+        </div>
+        <div class="work-content">
+          <p class="work-placeholder-text">Client project — details to be added</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── THE PROFILE ── -->
+  <section id="profile">
+    <p class="section-label">Background &amp; Expertise</p>
+
+    <p class="profile-bio">Dr. Ramy Anwar is a Cairo University-trained pharmacist and MBA holder with a career built entirely inside Egypt's pharma and cosmetics industry. He has led cosmetics operations at a major pharmaceutical manufacturer, founded and operates a licensed pharmacy, and built a 19-SKU personal care brand from scratch. His work sits at the intersection of scientific rigour and commercial execution — a combination rare in the Egyptian market.</p>
+
+    <!-- Credential cards -->
+    <div class="profile-cards">
+
+      <div class="profile-card">
+        <div class="profile-card-icon">
+          <!-- Graduation cap -->
+          <svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v4c0 2 2.686 4 6 4s6-2 6-4v-4"/><line x1="22" y1="10" x2="22" y2="16"/></svg>
+        </div>
+        <p class="profile-card-category">Academic Foundation</p>
+        <p class="profile-card-title">B.Sc. Pharmacy</p>
+        <p class="profile-card-org">Cairo University, Faculty of Pharmacy</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-icon">
+          <!-- Briefcase / MBA -->
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12"/><path d="M2 12h20"/></svg>
+        </div>
+        <p class="profile-card-category">Business Strategy</p>
+        <p class="profile-card-title">MBA — SME Management</p>
+        <p class="profile-card-org">Arab Academy for Science, Technology &amp; Maritime Transport</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-icon">
+          <!-- Chart / leadership -->
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <p class="profile-card-category">Industry Leadership</p>
+        <p class="profile-card-title">Cosmetics Manager</p>
+        <p class="profile-card-org">Multicare Egypt for Pharmaceutical Industries</p>
+        <p class="profile-card-note">2015 – 2024</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-icon">
+          <!-- Cross / pharmacy -->
+          <svg viewBox="0 0 24 24"><path d="M11 2H9a2 2 0 0 0-2 2v4H3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-4V4a2 2 0 0 0-2-2z"/></svg>
+        </div>
+        <p class="profile-card-category">Healthcare Experience</p>
+        <p class="profile-card-title">Founder &amp; Owner</p>
+        <p class="profile-card-org">Health Pharmacy</p>
+        <p class="profile-card-note">Fully licensed, physically operating pharmacy</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-icon">
+          <!-- Rocket / founder -->
+          <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <p class="profile-card-category">Entrepreneurial Experience</p>
+        <p class="profile-card-title">Founder &amp; CEO</p>
+        <p class="profile-card-org">Inanna MEA</p>
+        <p class="profile-card-note">Built &amp; launched 19-SKU hair &amp; personal care brand from scratch</p>
+      </div>
+
+    </div>
+
+    <!-- Quote bar -->
+    <div class="profile-quote-bar">
+      <span class="profile-quote-bar-mark">"</span>
+      <div class="profile-quote-bar-body">
+        <p class="profile-quote-bar-text">Mastering both pharmaceutical science and business strategy is exceptional. <strong>I hold both — so your business is built on solid ground.</strong></p>
+        <p class="profile-quote-bar-attr">— Dr. Ramy Anwar</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── BOOK A DISCOVERY CALL ── -->
+  <section id="contact">
+    <div class="contact-corner-tl"></div>
+
+    <div class="contact-inner">
+
+      <div class="contact-left">
+        <p class="contact-eyebrow">Start Here</p>
+        <h2 class="contact-heading">
+          Book a<br><em>Discovery Call</em>
+        </h2>
+        <p class="contact-sub">If there is a brand to build, a product to register, a white label line to launch, or a market to enter — the right starting point is a conversation.</p>
+      </div>
+
+      <div class="contact-cta-block">
+        <p class="contact-phone-display">+20 115 4455448</p>
+        <a href="tel:+201154455448" class="contact-btn">
+          Call Now <span class="contact-btn-arrow">→</span>
+        </a>
+        <a href="https://wa.me/201154455448" target="_blank" class="contact-whatsapp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
